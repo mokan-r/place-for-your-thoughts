@@ -1,0 +1,112 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Superheroes</title>
+    <meta name="description" content="A superheroes site with posts">
+    <meta name="author" content="SitePoint">
+
+    <meta property="og:title" content="Superheroes">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A superheroes site with posts">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {"50":"#eef2ff","100":"#e0e7ff","200":"#c7d2fe","300":"#a5b4fc","400":"#818cf8","500":"#6366f1","600":"#4f46e5","700":"#4338ca","800":"#3730a3","900":"#312e81"}
+            }
+          },
+          fontFamily: {
+            'body': [
+          'Raleway', 
+          'ui-sans-serif', 
+          'system-ui', 
+          '-apple-system', 
+          'system-ui', 
+          'Segoe UI', 
+          'Roboto', 
+          'Helvetica Neue', 
+          'Arial', 
+          'Noto Sans', 
+          'sans-serif', 
+          'Apple Color Emoji', 
+          'Segoe UI Emoji', 
+          'Segoe UI Symbol', 
+          'Noto Color Emoji'
+        ],
+            'sans': [
+          'Raleway', 
+          'ui-sans-serif', 
+          'system-ui', 
+          '-apple-system', 
+          'system-ui', 
+          'Segoe UI', 
+          'Roboto', 
+          'Helvetica Neue', 
+          'Arial', 
+          'Noto Sans', 
+          'sans-serif', 
+          'Apple Color Emoji', 
+          'Segoe UI Emoji', 
+          'Segoe UI Symbol', 
+          'Noto Color Emoji'
+        ]
+          }
+        }
+      }</script>
+</head>
+
+<body class="bg-white dark:bg-[#1e1e1e] h-screen">
+    <nav class="bg-white select-none px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="container flex flex-wrap items-center justify-between mx-auto">
+            <a href="/" class="flex items-center">
+                <img src="/assets/images/amazing_logo.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo">
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Superheroes</span>
+            </a>
+            <div class="flex md:order-2">
+                <a href="/admin" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    Add posts
+                </a>
+                <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="pt-16">
+        <div class="flex flex-col justify-center items-center lg:flex-row gap-10 w-full p-10">
+            {{range .Data}}
+                <a href="/superheroes/?id={{.Id}}" class="flex items-center justify-center w-2/3 lg:w-1/5 h-40 p-6 bg-white border border-primary-200 rounded-lg shadow-md hover:bg-primary-100 dark:bg-primary-800 dark:border-primary-500 dark:hover:bg-primary-700">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-900 dark:text-white">{{.Name}}</h5>
+                </a>
+            {{end}}
+        </div>
+        <div class="flex justify-center w-full">
+            <div class="flex flex-col items-center">
+                <span class="text-sm text-primary-700 dark:text-primary-400">
+                    Showing <span class="font-semibold text-primary-900 dark:text-white">{{.EntryStart}}</span> to <span class="font-semibold text-primary-900 dark:text-white">{{.EntryEnd}}</span> of <span class="font-semibold text-primary-900 dark:text-white">{{.EntryCount}}</span> Entries
+                </span>
+                <div class="inline-flex mt-2 xs:mt-0">
+                    {{.PrevPageButton}}
+                    <div class="w-0.5 h-full bg-gray-500"></div>
+                    {{.NextPageButton}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
