@@ -5,7 +5,13 @@ This project represents a website where you can write a blog using markdown
 
 ## Running service
 
-In terminal simply run:
+First create `.env` file in project directory and place there:
+```markdown
+LOGIN=yourlogin
+PASSWORD=yourpassword
+```
+
+Then run in terminal:
 ```bash
 make
 ```
