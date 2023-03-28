@@ -10,6 +10,7 @@ First create `.env` file in project directory and place there:
 LOGIN=yourlogin
 PASSWORD=yourpassword
 ```
+You'll need them, when you add new posts in your website
 
 Then run in terminal:
 ```bash
